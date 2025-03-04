@@ -31,6 +31,8 @@ body{
 
 
 
+
+
       /*---------------------------Header---------------------------*/
 
 .header-area{
@@ -322,42 +324,48 @@ profile-photo .img{
 
 
 /*---------------------------Projects---------------------------*/
-.project-content{
+.project-content {
   padding: 90px 0;
-  /* color:#fff;  */
 }
-.project-title{
+
+.project-title {
   margin-bottom: 60px;
   text-align: center;
 }
-.project-title h4{
+
+.project-title h4 {
   text-transform: uppercase;
   font-size: 40px;
   line-height: 40px;
   color: #fed700;
   margin-bottom: 20px;
 }
-.project-title p{
+
+.project-title p {
   color: #e5e5e5;
 }
-.projects{
+
+.projects {
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
-.project{
-    /* padding: 30px 15px; */
-    color: #e5e5e5;
-    border: 2px solid #e5e5e5;
-    border-radius: 10px;
-    width: 100%;
-    position: relative;
-    padding: 25px;
-    text-align: center;
-    flex-basis: 32%;
-    transition: .3s;
+
+.project {
+  color: #e5e5e5;
+  border: 2px solid #e5e5e5;
+  border-radius: 10px;
+  width: 100%;
+  position: relative;
+  padding: 25px;
+  text-align: center;
+  flex-basis: 32%;
+  transition: 0.3s;
+  overflow: hidden;
+  cursor: pointer;
 }
-.project i{
+
+.project i {
   background-color: #fed700;
   width: 60px;
   height: 60px;
@@ -365,20 +373,74 @@ profile-photo .img{
   font-size: 26px;
   line-height: 60px;
   border-radius: 50%;
-}
-.project h4{
-  font-size: 26px;
-  text-transform: capitalize;
-  margin: 20px 0;
-}
-.project p{
-  text-align: justify;
-}
-.project:hover{
-  border-color: #fed700;
+  transition: opacity 0.3s;
 }
 
+.project h4,
+.project p {
+  font-size: 18px;
+  transition: opacity 0.3s;
+}
 
+/* Hide everything except hover content */
+.project:hover h4,
+.project:hover p,
+.project:hover i {
+  opacity: 0;
+}
+
+/* Blur and darken background while hovering */
+.project .hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Dark background */
+  backdrop-filter: blur(10px); /* Blur effect */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  pointer-events: none; /* Prevents blocking clicks */
+}
+
+/* Redirect Icon (Fixed) */
+.project .redirect-icon {
+  font-size: 50px;
+  color: #fed700;
+  background: none; /* Removed white background */
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Hover Message */
+.project .hover-message {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Hover Effects */
+.project:hover .hover-overlay {
+  opacity: 1;
+}
+
+.project:hover .redirect-icon,
+.project:hover .hover-message {
+  opacity: 1;
+  pointer-events: auto; /* Make clickable */
+}
 
 /*---------------------------Contact Me---------------------------*/
 .contact-content{
