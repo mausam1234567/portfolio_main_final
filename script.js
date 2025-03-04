@@ -147,5 +147,15 @@ $(document).ready(function() {
     });
 });
 
-
- 
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".project").forEach((project) => {
+    project.addEventListener("click", function (event) {
+      if (event.target.classList.contains("redirect-icon")) {
+        const url = project.getAttribute("data-url");
+        if (url) {
+          window.open(url, "_blank"); // Open in new tab
+        }
+      }
+    });
+  });
+});
